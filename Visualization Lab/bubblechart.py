@@ -13,7 +13,7 @@ go.Scatter(x=df['average_min_temp'],
 y=df['average_max_temp'],
 text=df['month'],
 mode='markers',
-marker=dict(size=df['actual_mean_temp'] / 5,color=df['average_max_temp'], showscale=True))
+marker=dict(size=df['actual_mean_temp'] / 5,color=df['actual_mean_temp'], showscale=True))
 ]
 
 # Preparing layout
