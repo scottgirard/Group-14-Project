@@ -2,12 +2,13 @@ import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
 
+# Data from data set is received
 df = pd.read_csv('../Datasets/Weather2014-15.csv')
 
 # Removing empty spaces from State column to avoid errors
 df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 
-# Preparing data
+# Preparing data - sets information to be used in each axis, the mode in which info will be displayed, and sets size and color of bubbles
 data = [
 go.Scatter(x=df['average_min_temp'],
 y=df['average_max_temp'],
@@ -16,7 +17,7 @@ mode='markers',
 marker=dict(size=df['actual_mean_temp'] / 5,color=df['actual_mean_temp'], showscale=True))
 ]
 
-# Preparing layout
+# Preparing layout - sets title of graph and title of axes
 layout = go.Layout(title='2014-15 Weather Statistics', xaxis_title="Minimum Average Temperature",
 yaxis_title="Maximum Average Temperature", hovermode='closest')
 
