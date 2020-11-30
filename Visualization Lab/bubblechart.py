@@ -8,13 +8,17 @@ df = pd.read_csv('../Datasets/Weather2014-15.csv')
 # Removing empty spaces from State column to avoid errors
 df = df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 
+# Creating sum of number of cases group by Country Column
+new_df = df.groupby(['month']).agg(
+{'average_min_temp': 'mean', 'average_max_temp': 'mean', 'actual_mean_temp': 'mean'}).reset_index()
+
 # Preparing data - sets information to be used in each axis, the mode in which info will be displayed, and sets size and color of bubbles
 data = [
-go.Scatter(x=df['average_min_temp'],
-y=df['average_max_temp'],
-text=df['month'],
+go.Scatter(x=new_df['average_min_temp'],
+y=new_df['average_max_temp'],
+text=new_df['month'],
 mode='markers',
-marker=dict(size=df['actual_mean_temp'] / 5,color=df['actual_mean_temp'], showscale=True))
+marker=dict(size=new_df['actual_mean_temp'],color=new_df['actual_mean_temp'], showscale=True))
 ]
 
 # Preparing layout - sets title of graph and title of axes
