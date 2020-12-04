@@ -8,22 +8,10 @@ import datetime as dt
 
 # Load CSV file from Datasets folder
 df1 = pd.read_csv('../Datasets/ForeignExchange.csv')
-#df2 = pd.read_csv('../Datasets/ForeignExchange.csv')
-#df3 = pd.read_csv('../Datasets/ForeignExchange.csv')
 
 application = dash.Dash()
 
 new_df = df1
-#new_df2 = df2
-#new_df3 = df3
-
-#dfDecade = new_df2
-#dfDecade['Date'] = pd.to_datetime(dfDecade['Date'])
-#dfCurrentDecade = dfDecade[dfDecade['Date'].dt.year >= 2010]
-
-#dfYear = new_df3
-#dfYear['Date'] = pd.to_datetime(dfYear['Date'])
-#dfCurrentYear = dfYear[dfYear['Date'].dt.year == 2019]
 
 new_df['Date'] = pd.to_datetime(new_df['Date'])
 
