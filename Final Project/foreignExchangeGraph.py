@@ -52,17 +52,7 @@ application.layout = html.Div(children=[
                       xaxis={'title': 'Time'}, yaxis={'title': 'Exchange Rate'})
               }
               ),
-    html.Div('Please select a timeframe', style={'color': '#ef3e18', 'margin':'10px'}),
-    dcc.Dropdown(
-        id='select-timeframe',
-        options=[
-            {'label': 'Year', 'value': 'Year'},
-            {'label': 'Decade', 'value': 'Decade'},
-            {'label': 'All time', 'value': 'All time'},
-        ],
-        value='Year'
-    ),
-    html.Div('Please select a first country to compare.', style={'color': '#ef3e18', 'margin':'10px'}),
+    html.Div('Please select a first country to compare.', style={'color': '#ef3e18', 'margin': '10px'}),
     dcc.Dropdown(
         id='select-comparison1',
         options=[
@@ -91,7 +81,7 @@ application.layout = html.Div(children=[
         ],
         value='AUSTRALIA - AUSTRALIAN DOLLAR/US$'
     ),
-html.Div('Please select a second country to compare.', style={'color': '#ef3e18', 'margin':'10px'}),
+    html.Div('Please select a second country to compare.', style={'color': '#ef3e18', 'margin': '10px'}),
     dcc.Dropdown(
         id='select-comparison2',
         options=[
@@ -119,6 +109,16 @@ html.Div('Please select a second country to compare.', style={'color': '#ef3e18'
             {'label': 'THAILAND - BAHT/US$', 'value': 'THAILAND - BAHT/US$'},
         ],
         value='EURO AREA - EURO/US$'
+    ),
+    html.Div('Please select a timeframe', style={'color': '#ef3e18', 'margin':'10px'}),
+    dcc.Dropdown(
+        id='select-timeframe',
+        options=[
+            {'label': 'Year', 'value': 'Year'},
+            {'label': 'Decade', 'value': 'Decade'},
+            {'label': 'All time', 'value': 'All time'},
+        ],
+        value='Year'
     )
 ])
 
