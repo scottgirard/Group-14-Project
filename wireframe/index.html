@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>Checkout</title>
+  <meta name="description" content="Wireframe design of a checkout form by Pingendo">
+  <meta name="keywords" content="Pingendo bootstrap example template wireframe checkout form">
+  <meta name="author" content="Pingendo">
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="bg-light">
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-bullseye fa-5x mb-4 text-info"></i>
+          <h2>Foreign Currency Exchange</h2>
+          <p class="lead">To begin enter your starting currency and amount,<br>&nbsp;and to finsih enter&nbsp;your end currency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <h4 class="d-flex justify-content-between mb-3"> <span class="text-muted"><br></span> </h4>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">EUR</h6> <small class="text-muted" contenteditable="true">Euro<br></small>
+              </div> <span class="text-muted">€</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">&nbsp;JPY</h6> <small class="text-muted">Japan Yen</small>
+              </div> <span class="text-muted">¥</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">MXN</h6> <small class="text-muted">Mexico Peso<br></small>
+              </div> <span class="text-muted">$</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">NZD</h6> <small class="text-muted">New Zealand Dollar<br></small>
+              </div> <span class="text-muted">$</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>
+                <h6 class="my-0">GBP</h6> <small class="text-muted">United Kingdom Pound</small>
+              </div> <span class="text-muted">£</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between" contenteditable="true">
+              <div>
+                <h6 class="my-0">USD<br></h6> <small class="text-muted">United States Dollar </small>
+              </div> <span class="text-muted">$</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <h4 class="mb-3">Convert to</h4>
+          <div class="col-md-4 mb-3"> <label for="Currency">Currency</label> <select class="custom-select d-block w-100" id="state" required="">
+              <option value="">Choose...</option>
+              <option value="EUR">Euro</option>
+              <option value="JPY">Japan Yen</option>
+              <option value="MXN">Mexico Peso</option>
+              <option value="NZD">New Zealand Dollar</option>
+              <option value="GBP">United Kingdom Dollar</option>
+              <option value="USD">United States Dollar</option>
+            </select>
+            <div class="invalid-feedback"> Please enter a valid value. </div>
+          </div>
+          <div class="col-md-4 mb-3"> <label for="Amount">Amount</label>
+            <input type="text" class="form-control" id="zip" placeholder="" required="">
+            <div class="invalid-feedback"> Amount required. </div>
+          </div>
+          <div class="col-md-4 mb-3"> <label for="Currency">Currency</label> <select class="custom-select d-block w-100 form-control-sm" id="country" required="">
+              <option value="">Choose...</option>
+              <option value="EUR">Euro</option>
+              <option value="JPY">Japan Yen</option>
+              <option value="MXN">Mexico Peso</option>
+              <option value="NZD">New Zealand Dollar</option>
+              <option value="GBP">United Kingdom Dollar</option>
+              <option value="USD">United States Dollar</option>
+            </select>
+            <div class="invalid-feedback"> Please select a valid value. </div>
+          </div>
+          <form class="needs-validation" novalidate="">
+            <div class="mb-3" style="">
+              <div class="invalid-feedback"> Please enter valid value </div>
+            </div>
+            <hr class="mb-4" style="">
+            <button class="btn btn-lg btn-block btn-success" type="submit" style="">Convert</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">Compare with</h4>
+          <div class="col-md-4 mb-3"> <label for="Currency">Currency</label> <select class="custom-select d-block w-100" id="state" required="">
+              <option value="">Choose...</option>
+              <option value="EUR">Euro</option>
+              <option value="JPY">Japan Yen</option>
+              <option value="MXN">Mexico Peso</option>
+              <option value="NZD">New Zealand Dollar</option>
+              <option value="GBP">United Kingdom Dollar</option>
+              <option value="USD">United States Dollar</option>
+            </select>
+            <div class="invalid-feedback"> Please enter a valid value. </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="invalid-feedback"> Amount required. </div>
+          </div>
+          <div class="col-md-4 mb-3"> <label for="Currency">Currency</label> <select class="custom-select d-block w-100 form-control-sm" id="country" required="">
+              <option value="">Choose...</option>
+              <option value="EUR">Euro</option>
+              <option value="JPY">Japan Yen</option>
+              <option value="MXN">Mexico Peso</option>
+              <option value="NZD">New Zealand Dollar</option>
+              <option value="GBP">United Kingdom Dollar</option>
+              <option value="USD">United States Dollar</option>
+            </select>
+            <div class="invalid-feedback"> Please select a valid value. </div>
+          </div>
+          <form class="needs-validation" novalidate="">
+            <div class="mb-3" style="">
+              <div class="invalid-feedback"> Please enter valid value </div>
+            </div>
+            <hr class="mb-4" style="">
+            <button class="btn btn-lg btn-block btn-success" type="submit" style="" contenteditable="true">Compare<br></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><iframe width="100%" height="400" src="https://media.discordapp.net/attachments/775448386882502689/784220538318487572/test2.PNG?width=944&amp;height=468" scrolling="no" frameborder="0"></iframe></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">&nbsp;<a class="btn btn-success" href="#">1 Year</a>&nbsp;&nbsp;<a class="btn btn-success" href="#">5 Years</a>&nbsp;&nbsp;<a class="btn btn-success" href="#">10 Years</a>&nbsp;&nbsp;<a class="btn btn-success" href="#" contenteditable="true">Lifetime<br></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="mb-3">Single Line Currency Exchange rate</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><iframe width="100%" height="400" src="https://media.discordapp.net/attachments/775448386882502689/784247258060292156/test2-2.PNG?width=956&amp;height=468" scrolling="no" frameborder="0"></iframe></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-3"> <label for="Currency">Currency</label> <select class="custom-select d-block w-100" id="state" required="">
+            <option value="">Choose...</option>
+            <option value="EUR">Euro</option>
+            <option value="JPY">Japan Yen</option>
+            <option value="MXN">Mexico Peso</option>
+            <option value="NZD">New Zealand Dollar</option>
+            <option value="GBP">United Kingdom Dollar</option>
+            <option value="USD">United States Dollar</option>
+          </select>
+          <div class="invalid-feedback"> Please enter a valid value. </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">&nbsp;<a class="btn btn-success" href="#">1 Year</a>&nbsp;&nbsp;<a class="btn btn-success" href="#">5 Years</a>&nbsp;&nbsp;<a class="btn btn-success" href="#">10 Years</a>&nbsp;&nbsp;<a class="btn btn-success" href="#" contenteditable="true">Lifetime<br></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 text-muted text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 my-4">
+          <p class="mb-1">© 2020-2021 Group 14 Company</p>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="assets/js/validation.js"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
