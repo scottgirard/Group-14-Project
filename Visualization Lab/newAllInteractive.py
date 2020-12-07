@@ -7,51 +7,43 @@ import plotly.graph_objs as go
 
 
 # Load CSV file from Datasets folder
-df1 = pd.read_csv('../Datasets/CoronaVirusTotal.csv')
-df2 = pd.read_csv('../Datasets/CoronaTimeSeries.csv')
-df3 = pd.read_csv('../Datasets/Olympic2016Rio.csv')
-df4 = pd.read_csv('../Datasets/Weather2014-15.csv')
+df1 = pd.read_csv('../Datasets/Olympic2016Rio.csv')
+df2 = pd.read_csv('../Datasets/Weather2014-15.csv')
 
 app = dash.Dash()
 
 # Bar chart data
-barchart_df = df3
+barchart_df = df1
 barchart_df = barchart_df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
 barchart_df = barchart_df.groupby(['NOC'])['Total'].sum().reset_index()
 barchart_df = barchart_df.sort_values(by=['Total'], ascending=[False]).head(20)
 data_barchart = [go.Bar(x=barchart_df['NOC'], y=barchart_df['Total'])]
 
 # Stack bar chart data
-stackbarchart_df = df1.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
-stackbarchart_df['Unrecovered'] = stackbarchart_df['Confirmed'] - stackbarchart_df['Deaths'] - stackbarchart_df[
-    'Recovered']
-stackbarchart_df = stackbarchart_df[(stackbarchart_df['Country'] != 'China')]
-stackbarchart_df = stackbarchart_df.groupby(['Country']).agg(
-    {'Confirmed': 'sum', 'Deaths': 'sum', 'Recovered': 'sum', 'Unrecovered': 'sum'}).reset_index()
-stackbarchart_df = stackbarchart_df.sort_values(by=['Confirmed'], ascending=[False]).head(20).reset_index()
-trace1_stackbarchart = go.Bar(x=stackbarchart_df['Country'], y=stackbarchart_df['Unrecovered'], name='Under Treatment',
-                              marker={'color': '#CD7F32'})
-trace2_stackbarchart = go.Bar(x=stackbarchart_df['Country'], y=stackbarchart_df['Recovered'], name='Recovered',
-                              marker={'color': '#9EA0A1'})
-trace3_stackbarchart = go.Bar(x=stackbarchart_df['Country'], y=stackbarchart_df['Deaths'], name='Deaths',
-                              marker={'color': '#FFD700'})
-data_stackbarchart = [trace1_stackbarchart, trace2_stackbarchart, trace3_stackbarchart]
+new_df = df1.groupby(['NOC']).agg(
+    {'Gold': 'sum', 'Silver': 'sum', 'Bronze': 'sum', 'Total': 'sum'}).reset_index()
+new_df = new_df.sort_values(by=['Total'], ascending=[False]).head(20)
+trace1 = go.Bar(x=new_df['NOC'], y=new_df['Bronze'], name='Bronze', marker={'color': '#CD7F32'})
+trace2 = go.Bar(x=new_df['NOC'], y=new_df['Silver'], name='Silver', marker={'color': '#9EA0A1'})
+trace3 = go.Bar(x=new_df['NOC'], y=new_df['Gold'], name='Gold', marker={'color': '#FFD700'})
+data_stackbarchart = [trace1, trace2, trace3]
 
 # Line Chart
-line_df = df2
-line_df['Date'] = pd.to_datetime(line_df['Date'])
-data_linechart = [go.Scatter(x=line_df['Date'], y=line_df['Confirmed'], mode='lines', name='Death')]
+new_df = df2.groupby(['month']).agg({'actual_max_temp': 'max'}).reset_index()
+new_df = new_df.reindex([5, 1, 11, 10, 9, 2, 4, 3, 7, 0, 8, 6])
+data_linechart = [go.Scatter(x=new_df['month'], y=new_df['actual_max_temp'], mode='lines', name='Month')]
 
 # Multi Line Chart
-multiline_df = df2
-multiline_df['Date'] = pd.to_datetime(multiline_df['Date'])
-trace1_multiline = go.Scatter(x=multiline_df['Date'], y=multiline_df['Death'], mode='lines', name='Death')
-trace2_multiline = go.Scatter(x=multiline_df['Date'], y=multiline_df['Recovered'], mode='lines', name='Recovered')
-trace3_multiline = go.Scatter(x=multiline_df['Date'], y=multiline_df['Unrecovered'], mode='lines', name='Under Treatment')
-data_multiline = [trace1_multiline, trace2_multiline, trace3_multiline]
+new_df = df2.groupby(['month']).agg({'actual_max_temp': 'max', 'actual_min_temp': 'min', 'actual_mean_temp': 'mean'}).reset_index()
+new_df = new_df.reindex([5, 1, 11, 10, 9, 2, 4, 3, 7, 0, 8, 6])
+trace1 = go.Scatter(x=new_df['month'], y=new_df['actual_max_temp'], mode='lines', name='Max')
+trace2 = go.Scatter(x=new_df['month'], y=new_df['actual_min_temp'], mode='lines', name='Min')
+trace3 = go.Scatter(x=new_df['month'], y=new_df['actual_mean_temp'], mode='lines', name='Mean')
+data_multiline = [trace1, trace2, trace3]
+
 
 # Bubble chart
-new_df = df4.groupby(['month']).agg(
+new_df = df2.groupby(['month']).agg(
 {'average_min_temp': 'mean', 'average_max_temp': 'mean', 'actual_mean_temp': 'mean'}).reset_index()
 data_bubblechart = [
 go.Scatter(x=new_df['average_min_temp'],
@@ -62,9 +54,9 @@ marker=dict(size=new_df['actual_mean_temp'],color=new_df['actual_mean_temp'], sh
 ]
 
 # Heatmap
-data_heatmap = [go.Heatmap(x=df4['month'],
-            y=df4['day'],
-            z=df4['actual_max_temp'].values.tolist(),
+data_heatmap = [go.Heatmap(x=df2['month'],
+            y=df2['day'],
+            z=df2['actual_max_temp'].values.tolist(),
             colorscale='Jet')]
 layout = go.Layout(title='Maximum Temperature by Day of the Week & Month of Year', xaxis_title="Month",
                    yaxis_title="Day of the Week")
@@ -95,35 +87,35 @@ app.layout = html.Div(children=[
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Stack bar chart', style={'color': '#df1e56'}),
     html.Div(
-        'This stack bar chart represent the CoronaVirus deaths, recovered and under treatment of all reported first 20 countries except China.'),
+        'This stack bar chart represents the total medals of the top 20 countries in the 2016 Olympics.'),
     dcc.Graph(id='graph3',
               figure={
                   'data': data_stackbarchart,
-                  'layout': go.Layout(title='Corona Virus Cases in the first 20 country expect China',
-                                      xaxis={'title': 'Country'}, yaxis={'title': 'Number of cases'},
+                  'layout': go.Layout(title='Total Medals of Top 20 Countries in the 2016 Olympics',
+                                      xaxis={'title': 'Country'}, yaxis={'title': 'Total medals'},
                                       barmode='stack')
               }
               ),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Line chart', style={'color': '#df1e56'}),
-    html.Div('This line chart represent the Corona Virus confirmed cases of all reported cases in the given period.'),
+    html.Div('This line chart represents the absolute maximum temperatures for each month of the year.'),
     dcc.Graph(id='graph4',
               figure={
                   'data': data_linechart,
-                  'layout': go.Layout(title='Corona Virus Confirmed Cases From 2020-01-22 to 2020-03-17',
-                                      xaxis={'title': 'Date'}, yaxis={'title': 'Number of cases'})
+                  'layout': go.Layout(title='Maximum Temperatures for Each Month of the Year',
+                                      xaxis={'title': 'Month'}, yaxis={'title': 'Actual Max Temperature'})
               }
               ),
     html.Hr(style={'color': '#7FDBFF'}),
     html.H3('Multi Line chart', style={'color': '#df1e56'}),
     html.Div(
-        'This line chart represent the CoronaVirus death, recovered and under treatment cases of all reported cases in the given period.'),
+        'This line chart represents the max, min, and mean temperatures of each month of the year.'),
     dcc.Graph(id='graph5',
               figure={
                   'data': data_multiline,
                   'layout': go.Layout(
-                      title='Corona Virus Death, Recovered and under treatment Cases From 2020-01-22 to 2020-03-17',
-                      xaxis={'title': 'Date'}, yaxis={'title': 'Number of cases'})
+                      title='Actual Max, Min, and Mean temp by Month',
+                      xaxis={'title': 'Month'}, yaxis={'title': 'Temperature'})
               }
               ),
     html.Hr(style={'color': '#7FDBFF'}),
