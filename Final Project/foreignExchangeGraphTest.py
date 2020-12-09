@@ -112,11 +112,12 @@ def update_figure2(selected_currency1, selected_currency2, n_clicks, selected_ti
     currency1 = selected_currency1
     currency2 = selected_currency2
     if(selected_timeframe != None):
-        if (int(selected_timeframe) >= 2000 and int(selected_timeframe) <= 2019):
-            dfTime = new_df2
-            dfTime['Date'] = pd.to_datetime(dfTime['Date'])
-            dfCurrentTime = dfTime[dfTime['Date'].dt.year >= int(selected_timeframe)]
-            filtered_df = dfCurrentTime
+        if(selected_timeframe.isdigit()):
+            if (int(selected_timeframe) >= 2000 and int(selected_timeframe) <= 2019):
+                dfTime = new_df2
+                dfTime['Date'] = pd.to_datetime(dfTime['Date'])
+                dfCurrentTime = dfTime[dfTime['Date'].dt.year >= int(selected_timeframe)]
+                filtered_df = dfCurrentTime
     filtered_df = filtered_df.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
     newTrace1_multiline = go.Scatter(x=filtered_df['Date'], y=filtered_df[currency1],
                                     mode='lines', name=currency1)
