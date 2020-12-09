@@ -120,11 +120,12 @@ app.layout = html.Div([
     dcc.Input(
         id='num-amount',
         type='number',
-        debounce=True,
+        debounce=False,
         placeholder=0.00,
     ),
 
-    html.Div(id='message_container'),
+    html.H4(id='message_container'),
+    html.Hr(),
 
     html.H6('All Currencies:', style={'color': '#666'}),
     html.Table([
@@ -211,15 +212,17 @@ def callback_a(x):
            np.round(x / conversion_dict[from_conversion_symbol] * df_gbp, 2), \
            np.round(x / conversion_dict[from_conversion_symbol] * df_usd, 2),
 
-
 @app.callback(
     Output('convert_from-output-container', 'children'),
     Output('num-amount', 'value'),
     Input('convert_from-dropdown', 'value')
 )
 def update_convert_from(value):
-    global from_conversion_symbol
-    from_conversion_symbol = value
+    if value is None:
+        raise PreventUpdate
+    else:
+        global from_conversion_symbol
+        from_conversion_symbol = value
     return ['Conversion Rate, USD to {} : {}'.format(value, np.round(conversion_dict[value],2)), amount_value]
 
 
@@ -229,8 +232,11 @@ def update_convert_from(value):
     Input('convert_to-dropdown', 'value')
 )
 def update_convert_to(value):
-    global to_conversion_symbol
-    to_conversion_symbol = value
+    if value is None:
+        raise PreventUpdate
+    else:
+        global to_conversion_symbol
+        to_conversion_symbol = value
     return ['Conversion Rate, USD to {} : {}'.format(value, np.round(conversion_dict[value],2))]
 
 @app.callback(
@@ -239,12 +245,15 @@ def update_convert_to(value):
     Input('num-amount', 'value')
 )
 def update_message(value, value2):
-    global message
-    message = ['{} {} is equivalent to {} {}'.format(amount_value,
+    if amount_value is None:
+        raise PreventUpdate
+    else:
+        global message
+        message = ['{} {} is equivalent to {} {}'.format(amount_value,
             long_name_dict[from_conversion_symbol], # from_conversion_symbol,
             np.round(amount_value / conversion_dict[from_conversion_symbol] * conversion_dict[to_conversion_symbol], 2),
             long_name_dict[to_conversion_symbol])] # to_conversion_symbol)]
-    return message
+        return message
 
 
 
