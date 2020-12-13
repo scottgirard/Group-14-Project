@@ -8,12 +8,12 @@ import plotly.graph_objs as go
 from html import unescape
 from dash.exceptions import PreventUpdate
 
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css']
 # external_stylesheets = ['http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css']
 # external_stylesheets = ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css']
 
 # app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app = dash.Dash(__name__, serve_locally=True)
+app = dash.Dash(__name__, serve_locally=False)
 server = app.server
 
 # Load CSV file from Datasets folder
@@ -176,7 +176,7 @@ app.layout = html.Div([
     dcc.Input(
         id='num-amount',
         type='number',
-        debounce=True,
+        debounce=False,
         placeholder=0.00,
     ),
 
