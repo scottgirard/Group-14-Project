@@ -194,8 +194,40 @@ app.layout = html.Div([
     html.I(className='fa d-block fa-bullseye fa-5x mb-4 text-info'),
     html.H2('Foreign Currency Exchange', style={'color': '#559C3E'}),
     ]),
-
-    html.H6('Convert from:', style={'color': '#559C3E'}),
+    html.Br(),
+    html.H2('Description:', style={'margin': '10px'}),
+    html.H4('Foreign Currency Exchange is designed to pull currency conversion data from a consistent source and perform currency conversion from ', style={'margin': '10px'}),
+    html.H4('one unit of currency to another, as well as display the historical rates of currency conversion with a graph.', style={'margin': '10px'}),
+    html.Br(),
+    html.H2('Instructions:', style={'margin': '10px'}),
+    html.H3('To Convert one currency to another:', style={'margin': '20px'}),
+    html.H4('- [ ] Select the interface under "Convert From" and choose the Currency you wish to start with', style={'margin': '20px'}),
+    html.H4('- [ ] For Example, If you wanted to convert 10 US Dollar to a exact sum of Euros, you would enter "U.S Dollar" from the Dropdown menu.', style={'margin': '20px'}),
+    html.H4('- [ ] Select the Interface under "Convert To" and choose the Currency you wish to end with', style={'margin': '20px'}),
+    html.H4('- [ ] For the above example, you would select "European Union Euros"', style={'margin': '20px'}),
+    html.H4('- [ ] In the Interface under "Amount", Type the amount of the Currency you wish to convert.', style={'margin': '20px'}),
+    html.H4('- [ ] In the Above example, you would type 10 into the Interface.', style={'margin': '20px'}),
+    html.H4('- [ ] Under the "Amount" Interface, the website will return your answer.', style={'margin': '20px'}),
+    html.Br(),
+    html.H3('To View the Exchange Rate changes for the Year via a visual representation:', style={'margin': '20px'}),
+    html.H4('- [ ] Scroll Down to the section labelled "High Level Overview"', style={'margin': '20px'}),
+    html.H4('- [ ] Under the words "Foreign Exchange Rates for the Year", you should see a visual representation of the currency rates as imported from the Data.', style={'margin': '20px'}),
+    html.Br(),
+    html.H3('To get a more focused chart based on a single currency of your choosing:', style={'margin': '20px'}),
+    html.H4('- [ ] Scroll down to the section labeled "Single Currency Focus"', style={'margin': '20px'}),
+    html.H4('- [ ] Under the text "Please select a currency", in the interface, select the currency you wish to view the History for.', style={'margin': '20px'}),
+    html.H4('- [ ] In the graph above that, you should see the graph update to reflect the selected currency.', style={'margin': '20px'}),
+    html.Br(),
+    html.Br(),
+    html.H3('To get a chart focused on comparison between two currencies of your choosing:', style={'margin': '20px'}),
+    html.H4('- [ ] Scroll down to the section labeled "Currency Comparison"', style={'margin': '20px'}),
+    html.H4('- [ ] Under the text "Please select a first country to compare", in the interface, select your first Currency', style={'margin': '20px'}),
+    html.H4('- [ ] Under the text "Please select a second country to compare", in the interface, select your second Currency', style={'margin': '20px'}),
+    html.H4('- [ ] Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.', style={'margin': '20px'}),
+    html.H4('- [ ] You should see your graph updated to reflect the data you entered.', style={'margin': '20px'}),
+    html.Br(),
+    html.Br(),
+    html.H6('Convert from:', style={'color': '#559C3E', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='convert_from-dropdown',
         options=dropdown_options,
@@ -205,7 +237,7 @@ app.layout = html.Div([
 
     html.Div(id='convert_from-output-container'),
 
-    html.H6('Convert to:', style={'color': '#559C3E'}),
+    html.H6('Convert to:', style={'color': '#559C3E', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='convert_to-dropdown',
         options=dropdown_options,
@@ -215,7 +247,7 @@ app.layout = html.Div([
 
     html.Div(id='convert_to-output-container'),
 
-    html.H6('Amount', style={'color': '#559C3E'}),
+    html.H6('Amount', style={'color': '#559C3E', 'font-weight': 'bold'}),
     dcc.Input(
         id='num-amount',
         type='number',
@@ -226,42 +258,42 @@ app.layout = html.Div([
     html.H5(id='message_container', style={'color': '#559C3E', 'margin': '10px'}),
     html.Hr(),
 
-    html.H6('All Currencies:', style={'color': '#559C3E'}),
+    html.H6('All Currency Conversions:', style={'color': '#559C3E', 'font-weight': 'bold'}),
     html.Div(className='row', children=[
     html.Div(style={'display': 'inline-block'}, className='six columns', children=[
     html.Table([
         html.Tr([html.Td(html.H6('Currency', style={'color': '#3C77AF'})), html.Td(html.H6('Symbols', style={'color': '#3C77AF'})),
         html.Td(html.H6(' ')), html.Td(html.H6('Value', style={'color': '#3C77AF'}))]),
-        html.Tr([html.Td('Australia Dollar'), html.Td('AUD'), html.Td('A' + unescape('&#36;')), html.Td(id='aud')]),
-        html.Tr([html.Td('Brazil Real'), html.Td(['BRL', ]), html.Td('R'+ unescape('&#36;')), html.Td(id='brl')]),
-        html.Tr([html.Td('Canada Dollar'), html.Td(['CAD', ]), html.Td('C'+ unescape('&#36;')), html.Td(id='cad')]),
-        html.Tr([html.Td('China Yuan'), html.Td(['CNY', ]), html.Td(unescape('&#20803;')), html.Td(id='cny')]),
-        html.Tr([html.Td('Denmark Krone'), html.Td(['DKK', ]), html.Td('kr'), html.Td(id='dkk')]),
-        html.Tr([html.Td('Euro Members'), html.Td(['EUR', ]), html.Td(unescape('&#8364;')), html.Td(id='eur')]),
-        html.Tr([html.Td('Hong Kong Dollar'), html.Td(['HKD', ]), html.Td('HK' + unescape('&#36;')), html.Td(id='hkd')]),
-        html.Tr([html.Td('India Rupee'), html.Td(['INR', ]), html.Td(unescape('&#8377;')), html.Td(id='inr')]),
-        html.Tr([html.Td('Japan Yen'), html.Td(['JPY', ]), html.Td(unescape('&#165;')), html.Td(id='jpy')]),
-        html.Tr([html.Td('Malaysia Ringgit'), html.Td(['MYR', ]), html.Td('RM'), html.Td(id='myr')]),
-        html.Tr([html.Td('Mexico Peso'), html.Td(['MXN', ]), html.Td('Mex' + unescape('&#36;')), html.Td(id='mxn')]),
+        html.Tr([html.Td('Australia Dollar'), html.Td('AUD'), html.Td('A' + unescape('&#36;')), html.Td(id='aud', style={'color': '#3300FF'})]),
+        html.Tr([html.Td('Brazil Real'), html.Td(['BRL', ]), html.Td('R'+ unescape('&#36;')), html.Td(id='brl', style={'color': '#6633FF'})]),
+        html.Tr([html.Td('Canada Dollar'), html.Td(['CAD', ]), html.Td('C'+ unescape('&#36;')), html.Td(id='cad', style={'color': '#0000CC'})]),
+        html.Tr([html.Td('China Yuan'), html.Td(['CNY', ]), html.Td(unescape('&#20803;')), html.Td(id='cny', style={'color': '#0000FF'})]),
+        html.Tr([html.Td('Denmark Krone'), html.Td(['DKK', ]), html.Td('kr'), html.Td(id='dkk', style={'color': '#3366CC'})]),
+        html.Tr([html.Td('Euro Members'), html.Td(['EUR', ]), html.Td(unescape('&#8364;')), html.Td(id='eur', style={'color': '#33CCFF'})]),
+        html.Tr([html.Td('Hong Kong Dollar'), html.Td(['HKD', ]), html.Td('HK' + unescape('&#36;')), html.Td(id='hkd', style={'color': '#00CC00'})]),
+        html.Tr([html.Td('India Rupee'), html.Td(['INR', ]), html.Td(unescape('&#8377;')), html.Td(id='inr', style={'color': '#006633'})]),
+        html.Tr([html.Td('Japan Yen'), html.Td(['JPY', ]), html.Td(unescape('&#165;')), html.Td(id='jpy', style={'color': '#0099CC'})]),
+        html.Tr([html.Td('Malaysia Ringgit'), html.Td(['MYR', ]), html.Td('RM'), html.Td(id='myr', style={'color': '#CC9900'})]),
+        html.Tr([html.Td('Mexico Peso'), html.Td(['MXN', ]), html.Td('Mex' + unescape('&#36;')), html.Td(id='mxn', style={'color': '#FF9900'})]),
         html.Tr(
-        [html.Td('New Zealand Dollar'), html.Td(['NZD', ]), html.Td('NZ' + unescape('&#36;')), html.Td(id='nzd')]),
+        [html.Td('New Zealand Dollar'), html.Td(['NZD', ]), html.Td('NZ' + unescape('&#36;')), html.Td(id='nzd', style={'color': '#FF3300'})]),
         ]),
     ]),
     html.Div(className='five columns', children=[
     html.Table([
         html.Tr([html.Td(html.H6('Currency', style={'color': '#3C77AF'})), html.Td(html.H6('Symbols', style={'color': '#3C77AF'})),
         html.Td(html.H6(' ')), html.Td(html.H6('Value', style={'color': '#3C77AF'}))]),
-        html.Tr([html.Td('Norway Krone'), html.Td(['NOK', ]), html.Td('kr'), html.Td(id='nok')]),
-        html.Tr([html.Td('Singapore Dollar'), html.Td(['SGD', ]), html.Td('S' + unescape('&#36;')), html.Td(id='sgd')]),
-        html.Tr([html.Td('South Africa Rand'), html.Td(['ZAR', ]), html.Td('R'), html.Td(id='zar')]),
-        html.Tr([html.Td('South Korea Won'), html.Td(['KRW', ]), html.Td(unescape('&#8361;')), html.Td(id='krw')]),
-        html.Tr([html.Td('Sri Lanka Rupee'), html.Td(['LKR', ]), html.Td('Rs'), html.Td(id='lkr')]),
-        html.Tr([html.Td('Sweden Krona'), html.Td(['SEK', ]), html.Td('kr'), html.Td(id='sek')]),
-        html.Tr([html.Td('Switzerland Franc'), html.Td(['CHF', ]), html.Td('fr'), html.Td(id='chf')]),
-        html.Tr([html.Td('Taiwan New Dollar'), html.Td(['TWD', ]), html.Td('NT' + unescape('&#36;')), html.Td(id='twd')]),
-        html.Tr([html.Td('Thailand Baht'), html.Td(['THB', ]), html.Td(unescape('&#3647;')), html.Td(id='thb')]),
-        html.Tr([html.Td('United Kingdom Pound'), html.Td(['GBP', ]), html.Td(unescape('&#163;')), html.Td(id='gbp')]),
-        html.Tr([html.Td('U.S. Dollar'), html.Td(['USD', ]), html.Td('$'), html.Td(id='usd')]),
+        html.Tr([html.Td('Norway Krone'), html.Td(['NOK', ]), html.Td('kr'), html.Td(id='nok', style={'color': '#CC0033'})]),
+        html.Tr([html.Td('Singapore Dollar'), html.Td(['SGD', ]), html.Td('S' + unescape('&#36;')), html.Td(id='sgd', style={'color': '#FF3333'})]),
+        html.Tr([html.Td('South Africa Rand'), html.Td(['ZAR', ]), html.Td('R'), html.Td(id='zar', style={'color': '#CC0000'})]),
+        html.Tr([html.Td('South Korea Won'), html.Td(['KRW', ]), html.Td(unescape('&#8361;')), html.Td(id='krw', style={'color': '#CC0066'})]),
+        html.Tr([html.Td('Sri Lanka Rupee'), html.Td(['LKR', ]), html.Td('Rs'), html.Td(id='lkr', style={'color': '#990066'})]),
+        html.Tr([html.Td('Sweden Krona'), html.Td(['SEK', ]), html.Td('kr'), html.Td(id='sek', style={'color': '#FF33FF'})]),
+        html.Tr([html.Td('Switzerland Franc'), html.Td(['CHF', ]), html.Td('fr'), html.Td(id='chf', style={'color': '#6600CC'})]),
+        html.Tr([html.Td('Taiwan New Dollar'), html.Td(['TWD', ]), html.Td('NT' + unescape('&#36;')), html.Td(id='twd', style={'color': '#330099'})]),
+        html.Tr([html.Td('Thailand Baht'), html.Td(['THB', ]), html.Td(unescape('&#3647;')), html.Td(id='thb', style={'color': '#9900FF'})]),
+        html.Tr([html.Td('United Kingdom Pound'), html.Td(['GBP', ]), html.Td(unescape('&#163;')), html.Td(id='gbp', style={'color': '#9966FF'})]),
+        html.Tr([html.Td('U.S. Dollar'), html.Td(['USD', ]), html.Td('$'), html.Td(id='usd', style={'color': '#3300CC'})]),
         ]),
     ]),
     ]),
@@ -279,7 +311,7 @@ app.layout = html.Div([
               }
               ),
 
-    html.Div('Please select a timeframe', style={'color': '#F7B02', 'margin': '10px'}),
+    html.Div('Please select a timeframe', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='select-timeframe',
         options=[
@@ -300,7 +332,7 @@ dcc.Graph(id='graph2',
                   xaxis={'title': 'Time'}, yaxis={'title': 'Exchange Rate'})
           }
           ),
-html.Div('Please select a currency', style={'color': '#F7B02', 'margin': '10px'}),
+html.Div('Please select a currency', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
 dcc.Dropdown(
     id='select-currency',
     placeholder="Select a currency",
@@ -343,7 +375,7 @@ dcc.Dropdown(
                       xaxis={'title': 'Time'}, yaxis={'title': 'Exchange Rate'}),
               }
               ),
-    html.Div('Please select a first country to compare.', style={'color': '#F7B02', 'margin': '10px'}),
+    html.Div('Please select first country to compare.', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='comparison1',
         placeholder="Select a currency",
@@ -373,7 +405,7 @@ dcc.Dropdown(
         ],
         value='AUSTRALIA - AUSTRALIAN DOLLAR/US$'
     ),
-    html.Div('Please select a second country to compare.', style={'color': '#F7B02', 'margin': '10px'}),
+    html.Div('Please select second country to compare.', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='comparison2',
         placeholder="Select a currency",
@@ -403,10 +435,9 @@ dcc.Dropdown(
         ],
         value='EURO AREA - EURO/US$'
     ),
-    html.Div('Please enter a year between 2000 and 2019 to filter timeframe of the graph.', style={'color': '#F7B02', 'margin': '10px'}),
-    html.Div(dcc.Input(id='timeframe2', type='text')),
-    html.Br(),
-    html.Button('Submit', id='button'),
+    html.Div('Please enter a year between 2000 and 2019 to filter timeframe of the graph.', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
+    html.Div(dcc.Input(id='timeframe2', type='text', style={'margin': '10px'})),
+    html.Button('Filter', id='button', style={'margin': '10px'}),
     html.Br(),
     html.Br()
 ])
