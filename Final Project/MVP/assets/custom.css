@@ -45,6 +45,16 @@ body h4 {
   padding: 0px;
 }
 
+.markdown_container div {
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.markdown_container ul {
+  margin-left: 50px;
+}
+
 .message_container div {
   background-color: #fff;
 }

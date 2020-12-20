@@ -491,39 +491,42 @@ currency_comparison = html.Div([
 
 user_instructions = html.Div([
     navigation,
-    html.Div(className='inner_container', children=[
-    html.H3('Instructions'),
-    html.Br(),
-    html.H2('Description:', style={'margin': '10px'}),
-    html.H4('Foreign Currency Exchange is designed to pull currency conversion data from a consistent source and perform currency conversion from ', style={'margin': '10px'}),
-    html.H4('one unit of currency to another, as well as display the historical rates of currency conversion with a graph.', style={'margin': '10px'}),
-    html.Br(),
-    html.H2('Instructions:', style={'margin': '10px'}),
-    html.H3('To Convert one currency to another:', style={'margin': '20px'}),
-    html.H4('- [ ] Select the interface under "Convert From" and choose the Currency you wish to start with', style={'margin': '20px'}),
-    html.H4('- [ ] For Example, If you wanted to convert 10 US Dollar to a exact sum of Euros, you would enter "U.S Dollar" from the Dropdown menu.', style={'margin': '20px'}),
-    html.H4('- [ ] Select the Interface under "Convert To" and choose the Currency you wish to end with', style={'margin': '20px'}),
-    html.H4('- [ ] For the above example, you would select "European Union Euros"', style={'margin': '20px'}),
-    html.H4('- [ ] In the Interface under "Amount", Type the amount of the Currency you wish to convert.', style={'margin': '20px'}),
-    html.H4('- [ ] In the Above example, you would type 10 into the Interface.', style={'margin': '20px'}),
-    html.H4('- [ ] Under the "Amount" Interface, the website will return your answer.', style={'margin': '20px'}),
-    html.Br(),
-    html.H3('To View the Exchange Rate changes for the Year via a visual representation:', style={'margin': '20px'}),
-    html.H4('- [ ] Scroll Down to the section labelled "High Level Overview"', style={'margin': '20px'}),
-    html.H4('- [ ] Under the words "Foreign Exchange Rates for the Year", you should see a visual representation of the currency rates as imported from the Data.', style={'margin': '20px'}),
-    html.Br(),
-    html.H3('To get a more focused chart based on a single currency of your choosing:', style={'margin': '20px'}),
-    html.H4('- [ ] Scroll down to the section labeled "Single Currency Focus"', style={'margin': '20px'}),
-    html.H4('- [ ] Under the text "Please select a currency", in the interface, select the currency you wish to view the History for.', style={'margin': '20px'}),
-    html.H4('- [ ] In the graph above that, you should see the graph update to reflect the selected currency.', style={'margin': '20px'}),
-    html.Br(),
-    html.Br(),
-    html.H3('To get a chart focused on comparison between two currencies of your choosing:', style={'margin': '20px'}),
-    html.H4('- [ ] Scroll down to the section labeled "Currency Comparison"', style={'margin': '20px'}),
-    html.H4('- [ ] Under the text "Please select a first country to compare", in the interface, select your first Currency', style={'margin': '20px'}),
-    html.H4('- [ ] Under the text "Please select a second country to compare", in the interface, select your second Currency', style={'margin': '20px'}),
-    html.H4('- [ ] Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.', style={'margin': '20px'}),
-    html.H4('- [ ] You should see your graph updated to reflect the data you entered.', style={'margin': '20px'}),
-    html.Br(),
+    html.Div(className='markdown_container', children=[
+    html.H3('Instructions', style={'color': '#559C3E', 'margin-left': '10px'}),
+    dcc.Markdown('''
+            ##### Description:
+            
+            Foreign Currency Exchange is designed to pull currency conversion data from a consistent source and perform currency conversion from one unit of currency to another, as well as display the historical rates of currency conversion with a graph.
+            
+            ##### To Convert one currency to another:
+            
+            * Select the interface under "Convert From" and choose the Currency you wish to start with
+            * For Example, If you wanted to convert 10 US Dollar to a exact sum of Euros, you would enter "U.S Dollar" from the Dropdown menu.
+            * Select the Interface under "Convert To" and choose the Currency you wish to end with
+            * For the above example, you would select "European Union Euros
+            * In the Interface under "Amount", Type the amount of the Currency you wish to convert.
+            * In the Above example, you would type 10 into the Interface.
+            * Under the "Amount" Interface, the website will return your answer.
+            
+            ##### To View the Exchange Rate changes for the Year via a visual representation:
+            
+            * Scroll Down to the section labelled "High Level Overview"
+            * Under the words "Foreign Exchange Rates for the Year", you should see a visual representation of the currency rates as imported from the Data.
+            
+            ##### To get a more focused chart based on a single currency of your choosing:
+            
+            * Scroll down to the section labeled "Single Currency Focus"
+            * Under the text "Please select a currency", in the interface, select the currency you wish to view the History for.
+            * In the graph above that, you should see the graph update to reflect the selected currency.
+            
+            ##### To get a chart focused on comparison between two currencies of your choosing:
+            
+            * Scroll down to the section labeled "Currency Comparison"
+            * Under the text "Please select a first country to compare", in the interface, select your first Currency
+            * Under the text "Please select a second country to compare", in the interface, select your second Currency
+            * Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.
+            * You should see your graph updated to reflect the data you entered.
+             
+        '''),
     ]),
 ])
