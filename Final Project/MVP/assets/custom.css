@@ -14,23 +14,34 @@ body h4 {
   font-size: 2.6rem;
 }
 
+.inner_container {
+  width: 98%;
+  /* margin-left: 20px;
+  margin-right: 20px; */
+}
+
 .inner_container div {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 4px;
+  margin-right: 4px;
   padding: 0px;
+}
+
+.inner_container h3 {
+  margin-left: 10px;
 }
 
 .inner_container h6 {
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 10px; */
   padding: 0px;
   color: #559C3E;
   font-weight: bold;
 }
 
 .inner_container input {
-  margin-left: 30px;
+  /* margin-left: 30px; */
   margin-right: 10px;
+  margin-bottom: 10px;
   padding: 0px;
 }
 
@@ -115,4 +126,12 @@ td:last-child:not(.CalendarDay) {
   text-align: right;
 }
 
+input[type="number"] {
+  height: 38px;
+  padding: 10px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  margin-left: 10px;
+}
 
+button {
+  margin-left: 5px;
+}

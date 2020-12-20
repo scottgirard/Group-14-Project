@@ -13,7 +13,7 @@ message = ""
 selected_currency = ""
 
 # Load CSV file from Datasets folder
-df1 = new_df = new_df2 = pd.read_csv('../Datasets/ForeignExchange.csv') #df2
+df1 = new_df = new_df2 = pd.read_csv('./datasets/ForeignExchange.csv') #df2
 
 dfDecade = df1
 dfDecade['Date'] = pd.to_datetime(dfDecade['Date'])
@@ -272,9 +272,7 @@ currency_converter = html.Div([
 
     html.H4(id='message_container', style={'color': '#3C77AF', 'margin': '10px'}),
 ]),
-#    html.Div(className='row', children=[
-#    html.H6('All Currency Equivalencies:'),
-#    html.Div(className='row', children=[
+
     html.Div(className='six columns', children=[
     html.H6('All Currencies:'),
     html.Table([
@@ -292,12 +290,6 @@ currency_converter = html.Div([
         html.Tr([html.Td('Malaysia Ringgit'), html.Td(['MYR', ]), html.Td('RM'), html.Td(id='myr', style={'color': '#CC9900'})]),
         html.Tr([html.Td('Mexico Peso'), html.Td(['MXN', ]), html.Td('Mex' + unescape('&#36;')), html.Td(id='mxn', style={'color': '#FF9900'})]),
         html.Tr([html.Td('New Zealand Dollar'), html.Td(['NZD', ]), html.Td('NZ' + unescape('&#36;')), html.Td(id='nzd', style={'color': '#FF3300'})]),
-#        ]),
-#    ]),
-#    html.Div(className='six columns', children=[
-#    html.Table([
-#        html.Tr([html.Td(html.H6('Currency', style={'color': '#3C77AF'})), html.Td(html.H6('Symbols', style={'color': '#3C77AF'})),
-#        html.Td(html.H6(' ')), html.Td(html.H6('Value', style={'color': '#3C77AF'}))]),
         html.Tr([html.Td('Norway Krone'), html.Td(['NOK', ]), html.Td('kr'), html.Td(id='nok', style={'color': '#CC0033'})]),
         html.Tr([html.Td('Singapore Dollar'), html.Td(['SGD', ]), html.Td('S' + unescape('&#36;')), html.Td(id='sgd', style={'color': '#FF3333'})]),
         html.Tr([html.Td('South Africa Rand'), html.Td(['ZAR', ]), html.Td('R'), html.Td(id='zar', style={'color': '#CC0000'})]),
@@ -310,6 +302,10 @@ currency_converter = html.Div([
         html.Tr([html.Td('United Kingdom Pound'), html.Td(['GBP', ]), html.Td(unescape('&#163;')), html.Td(id='gbp', style={'color': '#9966FF'})]),
         html.Tr([html.Td('U.S. Dollar'), html.Td(['USD', ]), html.Td('$'), html.Td(id='usd', style={'color': '#3300CC'})]),
         ]),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
     ]),
     ]),
 ]),
@@ -319,6 +315,7 @@ currency_converter = html.Div([
 
 high_level_overview = html.Div([
     navigation,
+    html.Div(className='inner_container', children=[
     html.H3('High Level Overview', style={'color': '#559C3E'}),
     dcc.Graph(id='graph1',
           figure={
@@ -329,6 +326,7 @@ high_level_overview = html.Div([
           }
           ),
     html.Div('Please select a timeframe', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
+    html.Div(className='five columns', children=[
     dcc.Dropdown(
         id='select-timeframe',
         placeholder="Select a timeframe",
@@ -339,12 +337,19 @@ high_level_overview = html.Div([
         ],
     value='Year'
     ),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    ]),
+    ]),
 ])
 
 #################### Begin Currency Focus #####################
 
 single_currency_focus = html.Div([
     navigation,
+    html.Div(className='inner_container', children=[
     html.H3('Single Currency Focus', style={'color': '#559C3E'}),
     dcc.Graph(id='graph2',
           figure={
@@ -355,6 +360,7 @@ single_currency_focus = html.Div([
           }
           ),
     html.Div('Please select a currency', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
+    html.Div(className='five columns', children=[
     dcc.Dropdown(
         id='select-currency',
         placeholder="Select a currency",
@@ -384,12 +390,19 @@ single_currency_focus = html.Div([
         ],
     value='AUSTRALIA - AUSTRALIAN DOLLAR/US$',
     ),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    ]),
+    ]),
 ])
 
 #################### Begin Currency Comparison #######################
 
 currency_comparison = html.Div([
     navigation,
+    html.Div(className='inner_container', children=[
     html.H3('Currency Comparison', style={'color': '#559C3E'}),
     dcc.Graph(id='graph3',
               figure={
@@ -399,6 +412,7 @@ currency_comparison = html.Div([
                       xaxis={'title': 'Time'}, yaxis={'title': 'Exchange Rate'}),
               }
               ),
+    html.Div(className='five columns', children=[
     html.Div('Please select first country to compare.', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
     dcc.Dropdown(
         id='comparison1',
@@ -459,17 +473,25 @@ currency_comparison = html.Div([
         ],
         value='EURO AREA - EURO/US$'
     ),
+    ]),
+    html.Div(className='seven columns', children=[
     html.Div('Please enter a year between 2000 and 2019 to filter timeframe of the graph.', style={'color': '#F7B02', 'margin': '10px', 'font-weight': 'bold'}),
-    html.Div(dcc.Input(id='timeframe2', type='text', style={'margin': '10px'})),
-    html.Button('Filter', id='button', style={'margin': '10px'}),
+    html.Div(dcc.Input(id='timeframe2', type='text')),
+    html.Button('Filter', id='button'),
     html.Br(),
-    html.Br()
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    ]),
+    html.Br(),
+    ]),
 ])
 
 #################### User Instructions #########################
 
 user_instructions = html.Div([
     navigation,
+    html.Div(className='inner_container', children=[
     html.H3('Instructions'),
     html.Br(),
     html.H2('Description:', style={'margin': '10px'}),
@@ -503,5 +525,5 @@ user_instructions = html.Div([
     html.H4('- [ ] Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.', style={'margin': '20px'}),
     html.H4('- [ ] You should see your graph updated to reflect the data you entered.', style={'margin': '20px'}),
     html.Br(),
-    html.Br(),
+    ]),
 ])
