@@ -2,13 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-# import pandas as pd
-# import numpy as np
-# import plotly.graph_objs as go
-# from html import unescape
-# from dash.exceptions import PreventUpdate
 
-from app import app
 from layouts import currency_converter, \
                     high_level_overview, \
                     single_currency_focus, \
@@ -16,6 +10,8 @@ from layouts import currency_converter, \
                     user_instructions
 
 import callbacks
+
+from app import app, server
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -26,7 +22,7 @@ app.layout = html.Div([
               Input('url', 'pathname'))
 def display_page(pathname):
     if pathname == '/':
-        return currency_converter
+         return currency_converter
     elif pathname == '/currency_converter':
          return currency_converter
     elif pathname == '/high_level_overview':
