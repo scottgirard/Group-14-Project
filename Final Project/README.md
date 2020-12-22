@@ -10,7 +10,7 @@ Foreign currency exchange rates change frequently, making it difficult for trade
 
 ## Description
 
-Foreign Currency Exchange is written in Python with several components using the Plotly and Dash libraries. The application reads a .csv file into a dataframe then responds to user input via callbacks. Various data points are selected from the dataframe to generate time-series charts and the most current data in the .csv file is used for the currency conversions.
+Foreign Currency Exchange is written in Python with several components using the Plotly and Dash libraries. The application reads a .csv file into a dataframe and responds to user input via callbacks. Various data points are selected from the dataframe to generate time-series charts and the most current data in the .csv file is used for the currency conversions.
 
 This app is a multi-page Dash app, so it also serves as an example of how to properly structure a Dash application to use multiple pages.
 
