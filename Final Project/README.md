@@ -53,6 +53,8 @@ Additionally, again due to network latency, the currency converter functionality
 
 The demo is, however, useful for exploring a version of the application prior to installing it locally. 
 
+In the future we may rewrite the currency converter functionality to use javascript locally and avoid the costly callbacks to the server for updates.
+
 ## Usage
 
 ### To Convert one currency to another:
