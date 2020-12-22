@@ -2,7 +2,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import plotly.graph_objs as go
 import pandas as pd
-from app import app
+
 from layouts import multiline_df, \
                     data_frame_label, \
                     new_df2, dfCurrentYear, \
@@ -13,6 +13,8 @@ from layouts import multiline_df, \
                     df_aud, df_brl, df_cad, df_cny, df_dkk, df_eur, df_hkd, df_inr, \
                     df_jpy, df_myr, df_mxn, df_nzd, df_nok, df_sgd, df_zar, df_krw, \
                     df_lkr, df_sek, df_chf, df_twd, df_thb, df_gbp, df_usd
+
+from app import app
 
 
 ###################### Currency Converter Callback #######################
@@ -175,16 +177,16 @@ def update_figure1(selected_timeframe):
                    y=multiline_df['HONG KONG - HONG KONG DOLLAR/US$'],
                    mode='lines',
                    name='HKD/US$')
-    # trace9_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['INDIA - INDIAN RUPEE/US$'],
-    #              mode='lines',
-    #              name='INR/US$')
-    # trace10_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['KOREA - WON/US$'],
-    #              mode='lines',
-    #              name='KRW/US$')
+    trace9_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['INDIA - INDIAN RUPEE/US$'],
+                 mode='lines',
+                 name='INR/US$')
+    trace10_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['KOREA - WON/US$'],
+                 mode='lines',
+                 name='KRW/US$')
     trace11_multiline = \
         go.Scatter(x=filtered_df['Date'],
                    y=multiline_df['MEXICO - MEXICAN PESO/US$'],
@@ -205,11 +207,11 @@ def update_figure1(selected_timeframe):
                    y=multiline_df['DENMARK - DANISH KRONE/US$'],
                    mode='lines',
                    name='DKK/US$')
-    # trace15_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['JAPAN - YEN/US$'],
-    #              mode='lines',
-    #              name='JPY/US$')
+    trace15_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['JAPAN - YEN/US$'],
+                 mode='lines',
+                 name='JPY/US$')
     trace16_multiline = \
         go.Scatter(x=filtered_df['Date'],
                    y=multiline_df['MALAYSIA - RINGGIT/US$'],
@@ -225,26 +227,26 @@ def update_figure1(selected_timeframe):
                    y=multiline_df['SWEDEN - KRONA/US$'],
                    mode='lines',
                    name='SEK/US$')
-    # trace19_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['SRI LANKA - SRI LANKAN RUPEE/US$'],
-    #              mode='lines',
-    #              name='LKR/US$')
+    trace19_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['SRI LANKA - SRI LANKAN RUPEE/US$'],
+                 mode='lines',
+                 name='LKR/US$')
     trace20_multiline = \
         go.Scatter(x=filtered_df['Date'],
                    y=multiline_df['SWITZERLAND - FRANC/US$'],
                    mode='lines',
                    name='CHF/US$')
-    # trace21_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['TAIWAN - NEW TAIWAN DOLLAR/US$'],
-    #              mode='lines',
-    #              name='TWD/US$')
-    # trace22_multiline = \
-    #   go.Scatter(x=filtered_df['Date'],
-    #              y=multiline_df['THAILAND - BAHT/US$'],
-    #              mode='lines',
-    #              name='THB/US$')
+    trace21_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['TAIWAN - NEW TAIWAN DOLLAR/US$'],
+                 mode='lines',
+                 name='TWD/US$')
+    trace22_multiline = \
+      go.Scatter(x=filtered_df['Date'],
+                 y=multiline_df['THAILAND - BAHT/US$'],
+                 mode='lines',
+                 name='THB/US$')
 
     data_multiline = [trace1_multiline, trace2_multiline, trace3_multiline, trace4_multiline,
                       trace5_multiline, trace6_multiline, trace7_multiline, trace8_multiline,
