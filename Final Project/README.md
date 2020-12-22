@@ -2,7 +2,7 @@
 
 ## Foreign Currency Exchange
 
-Foreign Currency Exchange is a Python application built for the purpose of using a CSV dataset as a basis for building a data visualization application.
+Foreign Currency Exchange is a Python application built for the purpose of using a .csv dataset and the Plotly and Dash libraries as a basis for building a data visualization application.
 
 ## Introduction
 
@@ -12,7 +12,9 @@ Foreign currency exchange rates change frequently, making it difficult for trade
 
 Foreign Currency Exchange is written in Python with several components using the Plotly and Dash libraries. The application reads a .csv file into a dataframe then responds to user input via callbacks. Various data points are selected from the dataframe to generate time-series charts and the most current data in the .csv file is used for the currency conversions.
 
-Our current dataset covers a time period between the year 2000 and 2019, but the application could be easily adapted to use a different dataset or even a combination of historical data and real-time data feeds.
+This app is a multi-page Dash app, so it also serves as an example of how to properly structure a Dash application to use multiple pages.
+
+Our current dataset covers a time period between the year 2000 and 2019, but the application could be adapted to use a different dataset or even a combination of historical data and real-time data feeds.
 
 The application is intended to be easy to use by both foreign currency investors as well as those who travel across borders and need to make currency conversions on the fly.
 
@@ -53,35 +55,41 @@ The demo is, however, useful for exploring a version of the application prior to
 
 ## Usage
 
-To Convert one currency to another:
+### To Convert one currency to another:
 
-- Select the interface under "Convert From" and choose the Currency you wish to start with 
-  - For Example, If you wanted to convert 10 US Dollar to a exact sum of Euros, you would enter "U.S Dollar" from the Dropdown menu.
+* From the Convert tab, select a currency using the "Convert From" dropdown menu.
+  * For example, If you want to convert 10 US dollars to a equivalent sum of Euros, you would select "U.S Dollar" from the dropdown menu.
 
-- Select the Interface under "Convert To" and choose the Currency you wish to end with
-  - For the above example, you would select "European Union Euros"
-- In the Interface under "Amount", Type the amount of the Currency you wish to convert.
-  - In the Above example, you would type 10 into the Interface.
-- Under the "Amount" Interface, the website will return your answer.
+* Select a currency from the "Convert To" dropdown menu and choose the currency you wish to convert to.
+  * For the above example, you would select "European Union Euros"
+* In the input field under "Amount", Type the amount of the currency you wish to convert.
+  * In the Above example, you would type 10 into the input field.
+* The application will display the result below the user selections.
+* Additionally, the conversions for all currencies are shown in the large output box. These currencies are updated as each digit is entered into the "Amount" input field.
 
-To View the Exchange Rate changes for the Year via a visual representation:
+### To View the Exchange Rate changes for the Year via a visual representation:
 
-- Scroll Down to the section labelled "High Level Overview"
-- Under the words "Foreign Exchange Rates for the Year", you should see a visual representation of the currency rates as imported from the Data.
+* Click or tap the "Overview" tab at the top of the screen.
+* Under the words "Foreign Exchange Rates for the Year", you should see a visual representation of the currency rates as imported from the Data.
+* The chart is interactive. Use the icons on the top-right corner of the graph to modify the views. Tooltips should appear when you mouse over the top right corner of the graph.
+* Note the ability to select timeframes by clicking and dragging over a section of the graph. The graph can be reset by clicking the "Reset axes" icon on the top right of the graph.
+* Timeframes for the current year, decade, and all time can also be quickly accessed by using the dropdown menu below the graph.
 
-To get a more focused chart based on a single currency of your choosing:
+### To view a more focused chart based on a single currency of your choosing:
 
-- Scroll down to the section labeled "Single Currency Focus"
-- Under the text "Please select a currency", in the interface, select the currency you wish to view the History for.
-- In the graph above that, you should see the graph update to reflect the selected currency.
+* Click or tap the "Focus" tab at the top of the screen.
+* Under the text "Please select a currency", in the interface, select a currency you wish to view.
+* The graph above the dropdown selector will display the selected currency timeseries.
+* Be sure to explore the tooltips at the top right corner of the graph.
 
-To get a chart focused on comparison between two currencies of your choosing:
+### To view a chart focused on comparison between two currencies of your choosing:
 
-- Scroll down to the section labeled "Currency Comparison"
-- Under the text "Please select a first country to compare", in the interface, select your first Currency
-- Under the text "Please select a second country to compare", in the interface, select your second Currency
-- Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.
-- You should see your graph updated to reflect the data you entered.
+* Click or tap the "Compare" tab at the top of the screen.
+* Under the text "Please select a first country to compare", in the interface, select your first Currency
+* Under the text "Please select a second country to compare", in the interface, select your second Currency
+* Under the text "Please enter a year between 2000 and 2019 to filter timeframe of the graph", select a year between 2000 and 2019. This year should indicate the center of the time period you wish to represent.
+* You should see your graph updated to reflect the data you entered.
+* Be sure to explore the tooltips at the top right corner of the graph.
 
 ## License
 
